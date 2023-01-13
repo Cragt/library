@@ -1,10 +1,10 @@
 const modal = document.getElementById("myModal");
 const btn = document.getElementById("newBook");
 const modalBtn = document.getElementById("modal-btn");
-const title = document.getElementById("title");
-const author = document.getElementById("author");
-const pages = document.getElementById("pages");
-const haveRead = document.getElementById("have-read");
+const title = document.getElementById("title").value;
+const author = document.getElementById("author").value;
+const pages = document.getElementById("pages").value;
+const haveRead = document.getElementById("have-read").value;
 const span = document.getElementsByClassName("close")[0];
 
 let myLibrary = [];
@@ -68,8 +68,7 @@ window.onclick = function (event) {
 };
 
 modalBtn.onclick = function () {
-  console.log(title.value);
-  console.log(author.value);
-  console.log(pages.value);
-  console.log(haveRead.value);
+  const book = new Book(title, author, pages, haveRead);
+  addBooKToLibrary(book);
+  modal.style.display = "none";
 };
