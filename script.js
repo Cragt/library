@@ -1,3 +1,12 @@
+const modal = document.getElementById("myModal");
+const btn = document.getElementById("newBook");
+const modalBtn = document.getElementById("modal-btn");
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const pages = document.getElementById("pages");
+const haveRead = document.getElementById("have-read");
+const span = document.getElementsByClassName("close")[0];
+
 let myLibrary = [];
 
 function Book(title, author, pages, haveRead) {
@@ -18,33 +27,49 @@ const book4 = new Book("Fireflies", "C. McCarn", 231, "read");
 
 function addBooKToLibrary(book) {
   const cards = document.getElementById("cards");
-  const node = document.createElement("p");
+  const card = document.createElement("div");
+  const tNode = document.createElement("p");
+  const aNode = document.createElement("p");
+  const pNode = document.createElement("p");
+  const rNode = document.createElement("p");
   const titleNode = document.createTextNode(book.title);
   const authorNode = document.createTextNode(book.author);
-  node.appendChild(titleNode);
-  node.appendChild(authorNode);
-  cards.appendChild(node);
+  const pagesNode = document.createTextNode(book.pages);
+  const readNode = document.createTextNode(book.haveRead);
+  tNode.appendChild(titleNode);
+  aNode.appendChild(authorNode);
+  pNode.appendChild(pagesNode);
+  rNode.appendChild(readNode);
+  card.appendChild(tNode);
+  card.appendChild(aNode);
+  card.appendChild(pNode);
+  card.appendChild(rNode);
+  cards.appendChild(card);
 }
 
 addBooKToLibrary(book1);
 
 addBooKToLibrary(book2);
 
-// console.log(book1.title)
+addBooKToLibrary(book3);
 
-// cards.innerHTML += myLibrary[0].title;
-// cards.innerHTML += myLibrary[0].author;
-// cards.innerHTML += myLibrary[0].pages;
-// cards.innerHTML += myLibrary[0].haveRead;
+btn.onclick = function () {
+  modal.style.display = "block";
+};
 
-// function addBooKToLibrary(book) {
-//   const cards = document.getElementById("cards");
-//   for (let i = 0; i < myLibrary.length; i++) {
-//     const node = document.createElement("p")
-//     const textNode = document.createTextNode(myLibrary[i].title)
-//     node.appendChild(textNode);
-//     cards.appendChild(node);
+span.onclick = function () {
+  modal.style.display = "none";
+};
 
-//     console.log(myLibrary[i]);
-//   }
-// }
+window.onclick = function (event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
+
+modalBtn.onclick = function () {
+  console.log(title.value);
+  console.log(author.value);
+  console.log(pages.value);
+  console.log(haveRead.value);
+};
