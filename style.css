@@ -13,6 +13,15 @@
   margin: 5px;
 }
 
+.card {
+  border-radius: 10px;
+}
+
+.card,
+.card > p {
+  background-color: #fefefe;
+}
+
 .modal {
   display: none;
   position: fixed;
