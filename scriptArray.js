@@ -6,6 +6,7 @@ const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const haveRead = document.getElementById("have-read");
 const span = document.getElementsByClassName("close")[0];
+const cards = document.getElementById("cards");
 
 let myLibrary = [];
 
@@ -14,45 +15,34 @@ function Book(title, author, pages, haveRead) {
     (this.author = author),
     (this.pages = pages),
     (this.haveRead = haveRead);
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${haveRead}.`;
-  };
 
   if (alreadyInLibrary(title)) {
     return alert("Sorry, this book is already in the library");
-  } else {
-    myLibrary.push(this);
   }
+  addBooKToLibrary(this);
+}
+
+function addBooKToLibrary(book) {
+  myLibrary.push(book);
+  createBookCard(book);
 }
 
 const book1 = new Book("Harry Potter", "J.K. Rowling", 123, "unread");
 const book2 = new Book("ncfom", "Cormac McCarthy", 435, "read");
 const book3 = new Book("LoTR", "That dude", 13223, "unread");
 const book4 = new Book("Fireflies", "C. McCarn", 231, "read");
-const book5 = new Book("Fireflies", "C. McCarn", 231, "read");
+const book5 = new Book("Good Time Dragon", "C.T.", 1233, "unread");
 
-addBooKToLibrary(book1);
-
-addBooKToLibrary(book2);
-
-addBooKToLibrary(book3);
-addBooKToLibrary(book4);
-
-function addBooKToLibrary(book) {
-  const cards = document.getElementById("cards");
+function createBookCard(book) {
   const card = document.createElement("div");
   const tNode = document.createElement("p");
   const aNode = document.createElement("p");
   const pNode = document.createElement("p");
   const rNode = document.createElement("p");
-  card.classList.add("card");
-  // const removeBtn = document.createElement('button');
-  // removeBtn.classList.add('btn');
   const titleNode = document.createTextNode(book.title);
   const authorNode = document.createTextNode(book.author);
   const pagesNode = document.createTextNode(book.pages);
   const readNode = document.createTextNode(book.haveRead);
-
   tNode.appendChild(titleNode);
   aNode.appendChild(authorNode);
   pNode.appendChild(pagesNode);
@@ -79,26 +69,17 @@ window.onclick = function (event) {
   }
 };
 
-modalBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  const book = new Book(title.value, author.value, pages.value, haveRead.value);
+// modalBtn.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   const book = new Book(title.value, author.value, pages.value, haveRead.value);
 
-  modal.style.display = "none";
-  addBooKToLibrary(book);
-  console.log(book.title);
-});
+//        modal.style.display = "none";
+//        addBooKToLibrary(book);
+//   console.log(book.title);
+// });
 
 function alreadyInLibrary(title) {
   return myLibrary.some(function (el) {
     return el.title === title;
   });
 }
-
-// removeBtn = document.getElementsByClassName("btn")
-// removeBtn.addEventListener("click", function (event) {
-//   event.currentTarget.parentNode.remove();
-// })
-
-// removeBook.addEventListener('click', function(event) {
-// e.currentTarget.parentNode.remove();
-// })
