@@ -28,8 +28,13 @@ const addBooKToLibrary = function (book) {
 };
 
 const book1 = new Book("Harry Potter", "J.K. Rowling", 123, "Unread");
-const book2 = new Book("LotR", "J.K. Rowling", 123, "Unread");
-const book3 = new Book("Mickey Mouse", "J.K. Rowling", 123, "Unread");
+const book2 = new Book("LotR", "J.R.R. Tolkien", 4214, "Read");
+const book3 = new Book(
+  "No Country for Old Men",
+  "Cormac McCarthy",
+  575,
+  "Unread"
+);
 
 createCard = function () {
   cards.innerHTML = "";
@@ -68,13 +73,22 @@ modalBtn.addEventListener("click", function (event) {
 
 function deleteBook(el) {
   const element = el;
-  console.log();
+  // console.log();
   element.parentNode.remove();
+  // console.log(myLibrary);
 }
-
-function removeFromArray() {}
 
 createCard();
 
-// const index = myLibrary.findIndex(v => v.title === "Harry Potter");
-// console.log(index);
+// const findIndex = function (bookTitle) {
+//   console.log(myLibrary.findIndex(v => v.title === bookTitle));
+// }
+// removeFromArray('Harry Potter')
+
+// function removeFromArray(rmvTitle) {
+//   myLibrary.splice(myLibrary.findIndex(v => v.title === rmvTitle), 1)
+// }
+// console.log(findIndex('Harry Potter'));
+// findIndex('LotR')
+
+// onclick="deleteBook(this), removeFromArray(this)
