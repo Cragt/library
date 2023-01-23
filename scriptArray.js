@@ -11,6 +11,7 @@ const removeBtn = document.getElementsByClassName("remove-btn");
 
 let myLibrary = [];
 
+// Book Constructor
 function Book(title, author, pages, haveRead) {
   (this.title = title),
     (this.author = author),
@@ -23,6 +24,7 @@ function Book(title, author, pages, haveRead) {
   addBooKToLibrary(this);
 }
 
+// Adds book to array
 const addBooKToLibrary = function (book) {
   myLibrary.push(book);
 };
@@ -36,6 +38,7 @@ const book3 = new Book(
   "Unread"
 );
 
+// Creates books for each card in the DOM
 createCard = function () {
   cards.innerHTML = "";
   myLibrary.forEach((book) => {
@@ -44,6 +47,13 @@ createCard = function () {
   });
 };
 
+const erase = document.querySelectorAll(".erase");
+console.log(erase);
+// erase.forEach(item => {
+//   item.onclick = () =>
+// })
+
+// Checks the array for already registered books
 function alreadyInLibrary(title) {
   return myLibrary.some(function (el) {
     return el.title === title;
@@ -71,24 +81,9 @@ modalBtn.addEventListener("click", function (event) {
   createCard();
 });
 
+// Deletes book card
 function deleteBook(el) {
   const element = el;
-  // console.log();
   element.parentNode.remove();
-  // console.log(myLibrary);
 }
-
 createCard();
-
-// const findIndex = function (bookTitle) {
-//   console.log(myLibrary.findIndex(v => v.title === bookTitle));
-// }
-// removeFromArray('Harry Potter')
-
-// function removeFromArray(rmvTitle) {
-//   myLibrary.splice(myLibrary.findIndex(v => v.title === rmvTitle), 1)
-// }
-// console.log(findIndex('Harry Potter'));
-// findIndex('LotR')
-
-// onclick="deleteBook(this), removeFromArray(this)
