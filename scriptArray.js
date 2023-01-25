@@ -39,6 +39,7 @@ const book3 = new Book(
 );
 
 // Creates books for each card in the DOM
+
 createCard = function () {
   cards.innerHTML = "";
   myLibrary.forEach((book) => {
@@ -47,8 +48,35 @@ createCard = function () {
   });
 };
 
-const erase = document.querySelectorAll(".erase");
-console.log(erase);
+// createCard = function () {
+//   cards.innerHTML = "";
+//   myLibrary.forEach((book) => {
+//     let card = document.createElement("div");
+//     let title = document.createElement('p');
+//     let author = document.createElement('p');
+//     let pages = document.createElement('p');
+//     let haveRead = document.createElement('p');
+//     let rmvButton = document.createElement('button')
+
+//     title.innerHTML = book.title;
+//     author.innerHTML = book.author;
+//     pages.innerHTML = book.pages;
+//     haveRead.innerHTML = book.haveRead;
+//     rmvButton.innerHTML = "Delete";
+//     rmvButton.classList.add("remove-btn")
+//     card.classList.add("card");
+
+//     cards.appendChild(card);
+//     card.appendChild(title);
+//     card.appendChild(author);
+//     card.appendChild(pages);
+//     card.appendChild(haveRead);
+//     card.appendChild(rmvButton);
+//   })
+// }
+
+// const erase = document.querySelectorAll(".erase");
+// console.log(erase);
 // erase.forEach(item => {
 //   item.onclick = () =>
 // })
@@ -82,6 +110,8 @@ modalBtn.addEventListener("click", function (event) {
 });
 
 // Deletes book card
+// removeBtn.onclick = console.log("asdf");
+
 function deleteBook(el) {
   const element = el;
   element.parentNode.remove();
