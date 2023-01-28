@@ -39,47 +39,14 @@ const book3 = new Book(
 );
 
 // Creates books for each card in the DOM
-
 createCard = function () {
   cards.innerHTML = "";
-  myLibrary.forEach((book) => {
-    let html = `<div class="card"><p>${book.title}</p><p>${book.author}</p><p>${book.pages}</p><p>${book.haveRead}</p><button class="remove-btn" onclick="deleteBook(this)">Delete</div>`;
+  myLibrary.forEach((book, index) => {
+    console.log(index);
+    let html = `<div class="card"><p>${book.title}</p><p>${book.author}</p><p>${book.pages}</p><p>${book.haveRead}</p><button class="remove-btn" onclick="deleteBook(${index})">Delete</div>`;
     cards.innerHTML += html;
   });
 };
-
-// createCard = function () {
-//   cards.innerHTML = "";
-//   myLibrary.forEach((book) => {
-//     let card = document.createElement("div");
-//     let title = document.createElement('p');
-//     let author = document.createElement('p');
-//     let pages = document.createElement('p');
-//     let haveRead = document.createElement('p');
-//     let rmvButton = document.createElement('button')
-
-//     title.innerHTML = book.title;
-//     author.innerHTML = book.author;
-//     pages.innerHTML = book.pages;
-//     haveRead.innerHTML = book.haveRead;
-//     rmvButton.innerHTML = "Delete";
-//     rmvButton.classList.add("remove-btn")
-//     card.classList.add("card");
-
-//     cards.appendChild(card);
-//     card.appendChild(title);
-//     card.appendChild(author);
-//     card.appendChild(pages);
-//     card.appendChild(haveRead);
-//     card.appendChild(rmvButton);
-//   })
-// }
-
-// const erase = document.querySelectorAll(".erase");
-// console.log(erase);
-// erase.forEach(item => {
-//   item.onclick = () =>
-// })
 
 // Checks the array for already registered books
 function alreadyInLibrary(title) {
@@ -88,6 +55,7 @@ function alreadyInLibrary(title) {
   });
 }
 
+// Functions for modal window
 btn.onclick = function () {
   modal.style.display = "block";
 };
@@ -102,6 +70,7 @@ window.onclick = function (event) {
   }
 };
 
+// Bring up modal window with Add a Book form
 modalBtn.addEventListener("click", function (event) {
   event.preventDefault();
   const book = new Book(title.value, author.value, pages.value, haveRead.value);
@@ -109,11 +78,9 @@ modalBtn.addEventListener("click", function (event) {
   createCard();
 });
 
-// Deletes book card
-// removeBtn.onclick = console.log("asdf");
-
-function deleteBook(el) {
-  const element = el;
-  element.parentNode.remove();
+// Deletes book card and from array
+function deleteBook(index) {
+  myLibrary.splice(index, 1);
+  createCard();
 }
 createCard();
